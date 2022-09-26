@@ -17,18 +17,40 @@ h1 {
 }
 .color-container {
     background-color: orange;
-    width: 300px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     color: white;
     margin: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
+    font-size: 25px;
     border-radius: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     border: solid black 2px;
 }
 .color-container .color-code:hover {
     cursor: pointer;
+}
+.alert-msg {
+    position: fixed;
+    width: 250px;
+    height: 35px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    right: 50%;
+    bottom: 50px;
+    transform: translateX(50%);
+    transition: 0.8s;
+    color:white;
+    font-size: 20px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+
+}
+.active-msg {
+    bottom: -300px;
 }

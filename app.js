@@ -12,12 +12,13 @@ const generateRandomHex = () => {
 }
 
 
-for(let i = 0; i < 30; i++){
+for(let i = 0; i < 36; i++){
+    let hexCodetoPrint = generateRandomHex();
     let div = document.createElement("div");
     div.classList.add("color-container");
-    div.style.backgroundColor = generateRandomHex();
+    div.setAttribute("style", `background-color: ${hexCodetoPrint}`)
     let spanOfColorName = document.createElement("span");
-    spanOfColorName.innerText = generateRandomHex();
+    spanOfColorName.innerText = hexCodetoPrint;
     spanOfColorName.classList.add("color-code")
     div.appendChild(spanOfColorName);
     container.appendChild(div);
@@ -26,7 +27,15 @@ let allColorCodes = document.querySelectorAll(".color-code");
 allColorCodes.forEach((colorCode)=> {
     colorCode.addEventListener("click", (e)=> {
         //i can add a click to copy the hexCode 
-        console.log(e.target.innerText);
+        let textToCopy = e.target.innerText;
+        let alertEl = document.querySelector(".alert-msg");
+        alertEl.classList.remove("active-msg");
+        alertEl.setAttribute("style", `background-color:${textToCopy}`);
+        navigator.clipboard.writeText(textToCopy);
+        alertEl.innerText = textToCopy + " copied!";
+        setTimeout(()=> {
+            alertEl.classList.add("active-msg");
+        },2000)
     })
 })
 
