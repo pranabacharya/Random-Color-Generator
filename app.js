@@ -12,17 +12,21 @@ const generateRandomHex = () => {
 }
 
 
-for(let i = 0; i < 36; i++){
-    let hexCodetoPrint = generateRandomHex();
-    let div = document.createElement("div");
-    div.classList.add("color-container");
-    div.setAttribute("style", `background-color: ${hexCodetoPrint}`)
-    let spanOfColorName = document.createElement("span");
-    spanOfColorName.innerText = hexCodetoPrint;
-    spanOfColorName.classList.add("color-code")
-    div.appendChild(spanOfColorName);
-    container.appendChild(div);
+function generateUI(){
+    for(let i = 0; i < 36; i++){
+        let hexCodetoPrint = generateRandomHex();
+        let div = document.createElement("div");
+        div.classList.add("color-container");
+        div.setAttribute("style", `background-color: ${hexCodetoPrint}`)
+        let spanOfColorName = document.createElement("span");
+        spanOfColorName.innerText = hexCodetoPrint;
+        spanOfColorName.classList.add("color-code")
+        div.appendChild(spanOfColorName);
+        container.appendChild(div);
+    }
 }
+generateUI();
+
 let allColorCodes = document.querySelectorAll(".color-code");
 allColorCodes.forEach((colorCode)=> {
     colorCode.addEventListener("click", (e)=> {
@@ -39,3 +43,9 @@ allColorCodes.forEach((colorCode)=> {
     })
 })
 
+document.querySelector("#refresh").addEventListener("click", ()=> {
+    //here i am deleting the old elements and pushing new elements to the ui
+    let deleteItem = document.querySelectorAll(".color-container");
+    deleteItem.forEach(item => item.remove());
+    generateUI()
+});
